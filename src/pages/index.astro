@@ -1,0 +1,378 @@
+---
+const HERO = "https://images.unsplash.com/photo-1649511134921-67afc567280c";
+const DETAIL = "https://images.unsplash.com/photo-1533090161767-e6ffed986c88";
+const img = (base: string, w: number, q = 72) => `${base}?auto=format&fit=crop&w=${w}&q=${q}`;
+
+const ayuda = [
+  { n: "01", t: "Ansiedad y estrés", d: "Cuando la cabeza no para y el cuerpo lo nota: opresión, insomnio, un runrún que no se apaga." },
+  { n: "02", t: "Duelo y pérdidas", d: "Lo que no se supera, se acompaña. Un espacio sin prisa para lo que has perdido." },
+  { n: "03", t: "Autoestima y crisis vitales", d: "Cambios de rumbo, decisiones que pesan, preguntarte quién eres ahora que ya no eres quien eras." },
+  { n: "04", t: "Pareja y vínculos", d: "Terapia individual para entender lo que se repite en tus relaciones, y cambiarlo." },
+  { n: "05", t: "Estrés laboral y burnout", d: "Cuando el trabajo se ha comido todo lo demás y ya no sabes dónde empieza el descanso." },
+];
+
+const pasos = [
+  { n: "01", t: "Primer contacto", d: "Escribes o llamas. En 24–48 h fijamos un primer encuentro, sin lista de espera eterna." },
+  { n: "02", t: "Sesión de acogida", d: "50 minutos para contar qué te trae aquí. Sin diagnóstico exprés ni fórmulas de manual." },
+  { n: "03", t: "Un plan, contigo", d: "Definimos juntas objetivo y ritmo, y revisamos cada pocas sesiones si el camino sigue teniendo sentido." },
+];
+
+const facts = [
+  { n: "8", l: "años de consulta" },
+  { n: "500+", l: "procesos acompañados" },
+  { n: "B-01234", l: "número de colegiada" },
+];
+---
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Ancla · Psicología en Sant Just Desvern. Terapia individual para adultos: ansiedad, duelo, autoestima, vínculos y burnout. Primera sesión de acogida sin listas de espera eternas." />
+    <meta name="theme-color" content="#241f38" />
+    <meta property="og:title" content="Ancla · Psicología en Sant Just Desvern" />
+    <meta property="og:description" content="Terapia individual para adultos en Sant Just Desvern. Un espacio para encontrar suelo firme." />
+    <meta property="og:type" content="website" />
+    <title>Ancla · Psicología en Sant Just Desvern</title>
+    <link rel="icon" href={"data:image/svg+xml," + encodeURIComponent(`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%23241f38'/><path d='M16 8v13m0 0c-4 0-6.5-2.6-6.9-6.4M16 21c4 0 6.5-2.6 6.9-6.4M13 10.6c0-1.7 1.3-3 3-3s3 1.3 3 3' fill='none' stroke='%23d9a7ae' stroke-width='1.6' stroke-linecap='round'/></svg>`)} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;500;700&family=Karla:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <a class="skip" href="#contacto">Saltar a pedir sesión</a>
+
+    <header class="bar" data-nav>
+      <a href="#top" class="brand"><span class="brand__mark" aria-hidden="true"></span>Ancla</a>
+      <nav class="bar-nav" aria-label="Principal">
+        <a href="#ayuda">En qué te ayudo</a>
+        <a href="#primera-sesion">La primera sesión</a>
+        <a href="#sobre-mi">Sobre mí</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+      <a href="#contacto" class="btn btn-sm">Pedir sesión</a>
+    </header>
+
+    <main id="top">
+      <!-- HERO -->
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow"><span class="dot"></span>Psicología · Sant Just Desvern</p>
+          <h1>Encuentra <em>suelo firme.</em></h1>
+          <p class="lead">Terapia individual para adultos, presencial u online. Un espacio sin prisa para lo que te trae: ansiedad, duelo, una decisión que pesa, o simplemente ya no sabes por dónde seguir.</p>
+          <div class="hero-cta">
+            <a href="#contacto" class="btn">Pedir primera sesión</a>
+            <a href="tel:+34930000000" class="link-soft">o llama: 93 000 00 00</a>
+          </div>
+        </div>
+        <figure class="hero-photo" data-reveal>
+          <img src={img(HERO, 1400, 68)}
+            srcset={`${img(HERO, 800, 65)} 800w, ${img(HERO, 1200, 68)} 1200w, ${img(HERO, 1800, 70)} 1800w`}
+            sizes="(max-width: 860px) 100vw, 42vw"
+            alt="Rincón de la consulta con dos butacas junto a una ventana, luz cálida entrando en franjas y una planta al lado." loading="eager" fetchpriority="high" />
+          <figcaption><svg class="anchor-mark" viewBox="0 0 32 32" aria-hidden="true"><path d="M16 8v13m0 0c-4 0-6.5-2.6-6.9-6.4M16 21c4 0 6.5-2.6 6.9-6.4M13 10.6c0-1.7 1.3-3 3-3s3 1.3 3 3" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>Un lugar donde sentarse a mirar lo que pasa, sin juicio.</figcaption>
+        </figure>
+      </section>
+
+      <!-- Confianza -->
+      <section class="trust">
+        {facts.map((f) => (
+          <div class="fact">
+            <span class="fact-n">{f.n}</span>
+            <span class="fact-l">{f.l}</span>
+          </div>
+        ))}
+        <p class="trust-note">Psicóloga General Sanitaria · Presencial en Sant Just Desvern y online</p>
+      </section>
+
+      <!-- En qué te ayudo -->
+      <section id="ayuda" class="ayuda">
+        <header class="sec-head">
+          <h2>No hace falta tocar<br/>fondo para pedir ayuda.</h2>
+          <p class="sec-lead">En qué puedo ayudarte, sin etiquetas de manual.</p>
+        </header>
+        <ol class="ayuda-list">
+          {ayuda.map((a) => (
+            <li class="ayuda-row" data-reveal>
+              <span class="ayuda-n">{a.n}</span>
+              <div class="ayuda-body">
+                <h3>{a.t}</h3>
+                <p>{a.d}</p>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      <!-- Primera sesión -->
+      <section id="primera-sesion" class="proceso">
+        <div class="proceso-copy">
+          <h2>La primera sesión<br/>no compromete a nada.</h2>
+          <p class="proceso-lead">Sirve para conoceros y decidir, las dos, si este es el espacio que buscas. Nada se firma a ciegas.</p>
+          <ol class="pasos">
+            {pasos.map((p) => (
+              <li class="paso" data-reveal>
+                <span class="paso-n">{p.n}</span>
+                <div>
+                  <h3>{p.t}</h3>
+                  <p>{p.d}</p>
+                </div>
+              </li>
+            ))}
+          </ol>
+        </div>
+        <figure class="proceso-photo" data-reveal>
+          <img src={img(DETAIL, 900, 68)}
+            srcset={`${img(DETAIL, 600, 65)} 600w, ${img(DETAIL, 900, 68)} 900w`}
+            sizes="(max-width: 860px) 100vw, 34vw"
+            alt="Reloj de madera en la pared sobre una mesa con una planta pequeña: el tiempo de una sesión de 50 minutos." loading="lazy" />
+        </figure>
+      </section>
+
+      <!-- Testimonio -->
+      <section class="quote">
+        <blockquote data-reveal>
+          <p>«Después de años posponiéndolo, entré sin saber muy bien qué esperar. Salí de la primera sesión sintiendo que por fin alguien entendía por dónde iba la cosa.»</p>
+          <cite>— Laia R., proceso de ansiedad</cite>
+        </blockquote>
+      </section>
+
+      <!-- Sobre mí -->
+      <section id="sobre-mi" class="sobre">
+        <h2>Quién te acompaña</h2>
+        <p class="sobre-text">Soy <strong>Marina Costa</strong>, Psicóloga General Sanitaria y psicoterapeuta. Llevo ocho años acompañando procesos de adultos desde un enfoque integrador: cognitivo, con base en el vínculo y sin recetas de autoayuda. No trabajo con fórmulas cerradas: cada proceso se construye contigo, a tu ritmo, con la meta que tenga sentido <em>para ti</em>, no para un manual.</p>
+        <p class="sobre-cred">Máster en Psicoterapia · Colegiada nº B-01234 · Formación continuada en terapia de esquemas y mindfulness clínico.</p>
+      </section>
+
+      <!-- Contacto -->
+      <section id="contacto" class="book">
+        <div class="book-info">
+          <h2>Escríbeme y<br/>hablamos.</h2>
+          <dl class="contact">
+            <div><dt>Dónde</dt><dd>Carrer de la Riera, 12<br/>08960 Sant Just Desvern</dd></div>
+            <div><dt>Horario</dt><dd>Lun–Jue · 9:00–20:00<br/>Vie · 9:00–14:00</dd></div>
+            <div><dt>Contacto</dt><dd>93 000 00 00 · WhatsApp</dd></div>
+          </dl>
+        </div>
+        <form class="book-form" action="https://api.web3forms.com/submit" method="POST">
+          <input type="hidden" name="access_key" value="TU-ACCESS-KEY-WEB3FORMS" />
+          <input type="hidden" name="subject" value="Nueva solicitud de sesión · Ancla" />
+          <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" />
+          <h3>Pide tu primera sesión</h3>
+          <label>Nombre<input name="name" required autocomplete="name" /></label>
+          <label>Teléfono o email<input name="contact" required autocomplete="tel" /></label>
+          <label>¿Qué te trae por aquí?
+            <select name="motivo">
+              <option>Ansiedad y estrés</option>
+              <option>Duelo y pérdidas</option>
+              <option>Autoestima y crisis vitales</option>
+              <option>Pareja y vínculos</option>
+              <option>Estrés laboral y burnout</option>
+              <option>Prefiero contarlo en la sesión</option>
+            </select>
+          </label>
+          <label>Modalidad
+            <select name="modalidad">
+              <option>Presencial en Sant Just Desvern</option>
+              <option>Online</option>
+              <option>Aún no lo sé</option>
+            </select>
+          </label>
+          <button type="submit" class="btn btn-block">Pedir sesión</button>
+          <p class="form-note">Te respondo en 24–48 h laborables. Confidencial, sin compromiso.</p>
+        </form>
+      </section>
+    </main>
+
+    <footer class="foot">
+      <span class="brand sm"><span class="brand__mark" aria-hidden="true"></span>Ancla</span>
+      <p>Psicología para adultos · Sant Just Desvern</p>
+      <div class="foot-links"><a href="#">Instagram</a><a href="#">Aviso legal</a><a href="#">Privacidad</a></div>
+    </footer>
+
+    <script>
+      const io = new IntersectionObserver((es) => {
+        for (const e of es) if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      }, { threshold: 0.16 });
+      document.querySelectorAll('[data-reveal]').forEach((el) => io.observe(el));
+    </script>
+  </body>
+</html>
+
+<style is:global>
+  :root {
+    --ink: #2a2432;
+    --paper: #f3eee6;
+    --surface: #fbf8f3;
+    --dusk: #241f38;
+    --dusk-deep: #171328;
+    --mauve: #b97d8a;
+    --mauve-deep: #96586a;
+    --line: #e2d9cb;
+    --muted: #6b6270;
+    --display: "Frank Ruhl Libre", serif;
+    --ui: "Karla", system-ui, sans-serif;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--paper); color: var(--ink);
+    font-family: var(--ui); font-size: 17px; line-height: 1.65;
+    -webkit-font-smoothing: antialiased; overflow-x: hidden;
+  }
+  ::selection { background: var(--mauve); color: #fff; }
+  a { color: inherit; text-decoration: none; }
+  em { font-style: normal; color: var(--mauve-deep); font-weight: 700; }
+
+  .skip { position: absolute; left: -999px; top: auto; }
+  .skip:focus { left: 12px; top: 12px; z-index: 100; background: var(--dusk); color: #fff; padding: 10px 16px; border-radius: 8px; }
+
+  .eyebrow {
+    display: inline-flex; align-items: center; gap: 9px;
+    font-size: 13px; letter-spacing: .14em; text-transform: uppercase;
+    color: var(--mauve-deep); font-weight: 700; margin-bottom: 22px;
+  }
+  .eyebrow .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--mauve); flex: none; }
+
+  .btn {
+    display: inline-block; font-family: var(--ui); font-weight: 700; font-size: 16px;
+    padding: 15px 28px; border-radius: 100px; background: var(--dusk); color: #fff;
+    border: 1px solid var(--dusk); transition: transform .2s, background .25s, box-shadow .25s;
+  }
+  .btn:hover { background: var(--mauve-deep); border-color: var(--mauve-deep); transform: translateY(-2px); box-shadow: 0 14px 30px -14px rgba(150,88,106,.6); }
+  .btn-sm { padding: 11px 20px; font-size: 15px; }
+  .btn-block { width: 100%; padding: 16px; }
+  .link-soft { color: var(--muted); font-weight: 600; }
+  .link-soft:hover { color: var(--dusk); }
+
+  /* Bar */
+  .bar {
+    position: sticky; top: 0; z-index: 30;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 18px clamp(24px, 6vw, 80px);
+    background: color-mix(in srgb, var(--paper) 85%, transparent); backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+  }
+  .brand { display: inline-flex; align-items: center; gap: 9px; font-family: var(--display); font-style: normal; font-weight: 700; font-size: 24px; letter-spacing: -.01em; color: var(--ink); }
+  .brand.sm { font-size: 21px; }
+  .brand__mark { width: 9px; height: 9px; border-radius: 50%; background: var(--mauve); flex: none; }
+  .bar-nav { display: flex; gap: 32px; font-size: 15px; font-weight: 600; }
+  .bar-nav a { color: var(--muted); transition: color .25s; }
+  .bar-nav a:hover { color: var(--ink); }
+
+  /* HERO */
+  .hero {
+    display: grid; grid-template-columns: 1.05fr .95fr; gap: clamp(30px, 5vw, 64px);
+    align-items: center; padding: clamp(48px, 7vw, 96px) clamp(24px, 6vw, 80px) clamp(40px, 5vw, 64px);
+  }
+  .hero h1 {
+    font-family: var(--display); font-weight: 400; font-style: normal;
+    font-size: clamp(44px, 7vw, 84px); line-height: .98; letter-spacing: -.01em; margin-bottom: 26px;
+  }
+  .lead { max-width: 46ch; color: var(--muted); font-size: clamp(16px, 1.5vw, 19px); }
+  .hero-cta { display: flex; align-items: center; gap: 26px; margin-top: 36px; flex-wrap: wrap; }
+  .hero-copy { animation: rise .9s cubic-bezier(.2,.7,.2,1) both; }
+  @keyframes rise { from { opacity: 0; transform: translateY(24px); } }
+
+  .hero-photo { border-radius: 20px; overflow: hidden; background: var(--surface); border: 1px solid var(--line); box-shadow: 0 30px 60px -40px rgba(42,36,50,.45); }
+  .hero-photo img { display: block; width: 100%; height: clamp(300px, 38vw, 460px); object-fit: cover; }
+  .hero-photo figcaption { display: flex; align-items: center; gap: 10px; padding: 16px 20px; color: var(--muted); font-size: 14px; line-height: 1.4; }
+  .anchor-mark { width: 18px; height: 18px; color: var(--mauve-deep); flex: none; }
+
+  /* Trust */
+  .trust {
+    display: flex; flex-wrap: wrap; align-items: center; gap: clamp(24px, 5vw, 64px);
+    padding: 30px clamp(24px, 6vw, 80px); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
+    background: var(--surface);
+  }
+  .fact { display: flex; flex-direction: column; }
+  .fact-n { font-family: var(--display); font-weight: 400; font-size: clamp(30px, 3.6vw, 42px); color: var(--mauve-deep); line-height: 1; }
+  .fact-l { font-size: 13.5px; color: var(--muted); margin-top: 6px; max-width: 18ch; }
+  .trust-note { margin-left: auto; font-size: 14px; color: var(--muted); }
+
+  section { padding-left: clamp(24px, 6vw, 80px); padding-right: clamp(24px, 6vw, 80px); }
+  .ayuda, .proceso, .quote, .sobre, .book { padding-top: clamp(64px, 9vw, 120px); padding-bottom: clamp(64px, 9vw, 120px); }
+  .sec-head { margin-bottom: 54px; max-width: 640px; }
+  .sec-head h2, .sobre h2 {
+    font-family: var(--display); font-weight: 400; font-style: normal;
+    font-size: clamp(34px, 4.6vw, 56px); line-height: 1.05; letter-spacing: -.01em;
+  }
+  .sec-lead { margin-top: 16px; color: var(--muted); font-size: clamp(15px, 1.4vw, 17px); }
+  .sobre h2 { font-size: clamp(28px, 3.4vw, 38px); margin-bottom: 22px; color: var(--mauve-deep); }
+  [data-reveal] { opacity: 0; transform: translateY(22px); transition: opacity .7s ease, transform .7s ease; }
+  [data-reveal].in { opacity: 1; transform: none; }
+
+  /* En qué te ayudo — lista editorial, no cards */
+  .ayuda-list { list-style: none; max-width: 900px; }
+  .ayuda-row { display: grid; grid-template-columns: 72px 1fr; gap: 24px; padding: 30px 0; border-top: 1px solid var(--line); transition: transform .3s ease; }
+  .ayuda-row:last-child { border-bottom: 1px solid var(--line); }
+  .ayuda-row:hover { transform: translateX(12px); }
+  .ayuda-n { font-family: var(--display); font-weight: 700; font-size: 28px; color: var(--mauve); line-height: 1.3; }
+  .ayuda-body h3 { font-family: var(--display); font-weight: 400; font-size: clamp(22px, 2.6vw, 28px); margin-bottom: 8px; letter-spacing: -.01em; }
+  .ayuda-body p { color: var(--muted); max-width: 56ch; }
+
+  /* Primera sesión — banda dusk */
+  .proceso { background: var(--dusk); color: #fff; border-radius: 28px; margin-left: clamp(12px, 3vw, 40px); margin-right: clamp(12px, 3vw, 40px); display: grid; grid-template-columns: 1.3fr .9fr; gap: clamp(30px, 5vw, 64px); align-items: center; }
+  .proceso h2 { font-family: var(--display); font-weight: 400; font-size: clamp(34px, 4.6vw, 56px); line-height: 1.05; letter-spacing: -.01em; color: #fff; }
+  .proceso-lead { color: #cbc0d6; max-width: 50ch; margin-top: 18px; font-size: clamp(16px, 1.4vw, 18px); }
+  .pasos { list-style: none; margin-top: 44px; display: grid; gap: 28px; }
+  .paso { display: grid; grid-template-columns: 44px 1fr; gap: 18px; border-top: 1px solid rgba(255,255,255,.16); padding-top: 22px; }
+  .paso-n { font-family: var(--display); font-weight: 400; font-size: 20px; color: var(--mauve); }
+  .paso h3 { font-family: var(--display); font-weight: 400; font-size: 23px; margin-bottom: 8px; color: #fff; }
+  .paso p { color: #b9adc4; }
+  .proceso-photo { border-radius: 16px; overflow: hidden; border: 1px solid rgba(255,255,255,.14); }
+  .proceso-photo img { display: block; width: 100%; height: 100%; min-height: 320px; object-fit: cover; }
+
+  /* Testimonio */
+  .quote { background: var(--surface); text-align: center; }
+  .quote blockquote { max-width: 860px; margin: 0 auto; }
+  .quote p { font-family: var(--display); font-style: italic; font-weight: 400; font-size: clamp(24px, 3.6vw, 40px); line-height: 1.25; letter-spacing: -.005em; }
+  .quote cite { display: block; margin-top: 26px; font-style: normal; font-size: 14px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+
+  /* Sobre mí */
+  .sobre { max-width: 780px; }
+  .sobre-text { font-size: clamp(19px, 2.1vw, 25px); line-height: 1.5; color: var(--ink); }
+  .sobre-text strong { font-weight: 700; }
+  .sobre-cred { margin-top: 24px; color: var(--muted); font-size: 14.5px; }
+
+  /* Contacto */
+  .book { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(34px, 6vw, 84px); align-items: center; }
+  .book h2 { font-family: var(--display); font-weight: 400; font-size: clamp(32px, 4.2vw, 52px); line-height: 1.05; letter-spacing: -.01em; }
+  .contact { margin-top: 40px; display: grid; gap: 22px; }
+  .contact dt { font-size: 13px; letter-spacing: .12em; text-transform: uppercase; color: var(--mauve-deep); font-weight: 700; margin-bottom: 6px; }
+  .contact dd { color: var(--ink); line-height: 1.5; }
+  .book-form { background: var(--surface); border: 1px solid var(--line); border-radius: 22px; padding: clamp(26px, 3vw, 40px); box-shadow: 0 30px 70px -44px rgba(42,36,50,.4); }
+  .book-form h3 { font-family: var(--display); font-weight: 400; font-size: 26px; margin-bottom: 24px; letter-spacing: -.01em; }
+  .book-form label { display: block; font-size: 13px; letter-spacing: .04em; text-transform: uppercase; color: var(--muted); font-weight: 700; margin-bottom: 18px; }
+  .book-form input, .book-form select {
+    width: 100%; margin-top: 8px; padding: 13px 14px; background: var(--paper);
+    border: 1px solid var(--line); border-radius: 10px; color: var(--ink);
+    font-family: var(--ui); font-size: 16px; text-transform: none; letter-spacing: normal; font-weight: 500;
+    transition: border-color .25s, background .25s;
+  }
+  .book-form input:focus, .book-form select:focus { outline: none; border-color: var(--mauve-deep); background: #fff; }
+  .form-note { text-align: center; font-size: 13.5px; color: var(--muted); margin-top: 16px; text-transform: none; letter-spacing: normal; font-weight: 500; }
+
+  /* Footer */
+  .foot {
+    display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;
+    padding: 32px clamp(24px, 6vw, 80px); border-top: 1px solid var(--line);
+  }
+  .foot p { color: var(--muted); font-size: 14px; }
+  .foot-links { display: flex; gap: 22px; font-size: 14px; }
+  .foot-links a { color: var(--muted); transition: color .25s; }
+  .foot-links a:hover { color: var(--mauve-deep); }
+
+  @media (max-width: 860px) {
+    .bar-nav { display: none; }
+    .hero { grid-template-columns: 1fr; }
+    .hero-photo img { height: 280px; }
+    .ayuda-row { grid-template-columns: 44px 1fr; }
+    .proceso { grid-template-columns: 1fr; border-radius: 20px; }
+    .proceso-photo img { min-height: 220px; }
+    .book { grid-template-columns: 1fr; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, [data-reveal] { animation: none !important; transition: none !important; opacity: 1 !important; transform: none !important; }
+  }
+</style>
