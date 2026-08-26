@@ -1,7 +1,5 @@
 ---
-const HERO = "https://images.unsplash.com/photo-1649511134921-67afc567280c";
-const DETAIL = "https://images.unsplash.com/photo-1533090161767-e6ffed986c88";
-const img = (base: string, w: number, q = 72) => `${base}?auto=format&fit=crop&w=${w}&q=${q}`;
+const asset = (p: string) => `${import.meta.env.BASE_URL}/${p}`.replace("//", "/");
 
 const ayuda = [
   { n: "01", t: "Ansiedad y estrés", d: "Cuando la cabeza no para y el cuerpo lo nota: opresión, insomnio, un runrún que no se apaga." },
@@ -22,6 +20,16 @@ const facts = [
   { n: "500+", l: "procesos acompañados" },
   { n: "B-01234", l: "número de colegiada" },
 ];
+
+const reviews = [
+  { n: "Laia R.", a: "L", t: "hace 3 semanas", q: "Después de años posponiéndolo, salí de la primera sesión sintiendo que por fin alguien entendía por dónde iba la cosa." },
+  { n: "Núria S.", a: "N", t: "hace 2 meses", q: "Marina no te suelta frases de taza de desayuno. Te escucha de verdad y te devuelve las cosas de una forma que puedes usar." },
+  { n: "David M.", a: "D", t: "hace 4 meses", q: "Empecé online con muchas dudas y la distancia no se nota nada. Las sesiones empiezan puntuales y son un espacio que se respeta." },
+];
+
+const TEL = "+34622319047";
+const TEL_TXT = "622 31 90 47";
+const WA = "https://wa.me/34622319047";
 ---
 <!doctype html>
 <html lang="es">
@@ -33,6 +41,9 @@ const facts = [
     <meta property="og:title" content="Ancla · Psicología en Sant Just Desvern" />
     <meta property="og:description" content="Terapia individual para adultos en Sant Just Desvern. Un espacio para encontrar suelo firme." />
     <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://charcoles-hub.github.io/demo-psicologia-ancla/img/og.jpg" />
+    <meta property="og:url" content="https://charcoles-hub.github.io/demo-psicologia-ancla/" />
+    <meta name="twitter:card" content="summary_large_image" />
     <title>Ancla · Psicología en Sant Just Desvern</title>
     <link rel="icon" href={"data:image/svg+xml," + encodeURIComponent(`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%23241f38'/><path d='M16 8v13m0 0c-4 0-6.5-2.6-6.9-6.4M16 21c4 0 6.5-2.6 6.9-6.4M13 10.6c0-1.7 1.3-3 3-3s3 1.3 3 3' fill='none' stroke='%23d9a7ae' stroke-width='1.6' stroke-linecap='round'/></svg>`)} />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -62,14 +73,13 @@ const facts = [
           <p class="lead">Terapia individual para adultos, presencial u online. Un espacio sin prisa para lo que te trae: ansiedad, duelo, una decisión que pesa, o simplemente ya no sabes por dónde seguir.</p>
           <div class="hero-cta">
             <a href="#contacto" class="btn">Pedir primera sesión</a>
-            <a href="tel:+34930000000" class="link-soft">o llama: 93 000 00 00</a>
+            <a href={`tel:${TEL}`} class="link-soft">o llama: {TEL_TXT}</a>
           </div>
         </div>
         <figure class="hero-photo" data-reveal>
-          <img src={img(HERO, 1400, 68)}
-            srcset={`${img(HERO, 800, 65)} 800w, ${img(HERO, 1200, 68)} 1200w, ${img(HERO, 1800, 70)} 1800w`}
+          <img src={asset("img/consulta.webp")} width="1167" height="1750"
             sizes="(max-width: 860px) 100vw, 42vw"
-            alt="Rincón de la consulta con dos butacas junto a una ventana, luz cálida entrando en franjas y una planta al lado." loading="eager" fetchpriority="high" />
+            alt="Rincón de la consulta con dos butacas junto a una ventana, luz cálida entrando en franjas y una planta al lado." loading="eager" fetchpriority="high" decoding="async" />
           <figcaption><svg class="anchor-mark" viewBox="0 0 32 32" aria-hidden="true"><path d="M16 8v13m0 0c-4 0-6.5-2.6-6.9-6.4M16 21c4 0 6.5-2.6 6.9-6.4M13 10.6c0-1.7 1.3-3 3-3s3 1.3 3 3" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>Un lugar donde sentarse a mirar lo que pasa, sin juicio.</figcaption>
         </figure>
       </section>
@@ -122,26 +132,50 @@ const facts = [
           </ol>
         </div>
         <figure class="proceso-photo" data-reveal>
-          <img src={img(DETAIL, 900, 68)}
-            srcset={`${img(DETAIL, 600, 65)} 600w, ${img(DETAIL, 900, 68)} 900w`}
+          <img src={asset("img/detalle.webp")} width="900" height="601"
             sizes="(max-width: 860px) 100vw, 34vw"
-            alt="Reloj de madera en la pared sobre una mesa con una planta pequeña: el tiempo de una sesión de 50 minutos." loading="lazy" />
+            alt="Reloj de madera en la pared sobre una mesa con una planta pequeña: el tiempo de una sesión de 50 minutos." loading="lazy" decoding="async" />
         </figure>
-      </section>
-
-      <!-- Testimonio -->
-      <section class="quote">
-        <blockquote data-reveal>
-          <p>«Después de años posponiéndolo, entré sin saber muy bien qué esperar. Salí de la primera sesión sintiendo que por fin alguien entendía por dónde iba la cosa.»</p>
-          <cite>— Laia R., proceso de ansiedad</cite>
-        </blockquote>
       </section>
 
       <!-- Sobre mí -->
       <section id="sobre-mi" class="sobre">
-        <h2>Quién te acompaña</h2>
-        <p class="sobre-text">Soy <strong>Marina Costa</strong>, Psicóloga General Sanitaria y psicoterapeuta. Llevo ocho años acompañando procesos de adultos desde un enfoque integrador: cognitivo, con base en el vínculo y sin recetas de autoayuda. No trabajo con fórmulas cerradas: cada proceso se construye contigo, a tu ritmo, con la meta que tenga sentido <em>para ti</em>, no para un manual.</p>
-        <p class="sobre-cred">Máster en Psicoterapia · Colegiada nº B-01234 · Formación continuada en terapia de esquemas y mindfulness clínico.</p>
+        <figure class="sobre-photo" data-reveal>
+          <img src={asset("img/marina.webp")} width="800" height="1200"
+            alt="Retrato de Marina Costa, psicóloga, sonriendo con una blusa clara." loading="lazy" decoding="async" />
+          <figcaption>
+            <strong>Marina Costa</strong>
+            <span>Psicóloga General Sanitaria · Col. nº B-01234</span>
+          </figcaption>
+        </figure>
+        <div class="sobre-body">
+          <h2>Quién te acompaña</h2>
+          <p class="sobre-text">Soy <strong>Marina Costa</strong>, Psicóloga General Sanitaria y psicoterapeuta. Llevo ocho años acompañando procesos de adultos desde un enfoque integrador: cognitivo, con base en el vínculo y sin recetas de autoayuda. No trabajo con fórmulas cerradas: cada proceso se construye contigo, a tu ritmo, con la meta que tenga sentido <em>para ti</em>, no para un manual.</p>
+          <p class="sobre-cred">Máster en Psicoterapia · Colegiada nº B-01234 · Formación continuada en terapia de esquemas y mindfulness clínico.</p>
+        </div>
+      </section>
+
+      <!-- Reseñas -->
+      <section class="resenas">
+        <header class="resenas-head">
+          <h2>4,9 sobre 5 <em>en Google</em></h2>
+          <p class="resenas-count">46 reseñas · Sant Just Desvern</p>
+        </header>
+        <ul class="reviews">
+          {reviews.map((r) => (
+            <li class="review" data-reveal>
+              <div class="review-head">
+                <span class="avatar" aria-hidden="true">{r.a}</span>
+                <div>
+                  <strong>{r.n}</strong>
+                  <span class="review-meta">{r.t}</span>
+                </div>
+              </div>
+              <div class="stars" aria-label="5 de 5 estrellas">★★★★★</div>
+              <p>{r.q}</p>
+            </li>
+          ))}
+        </ul>
       </section>
 
       <!-- Contacto -->
@@ -149,10 +183,14 @@ const facts = [
         <div class="book-info">
           <h2>Escríbeme y<br/>hablamos.</h2>
           <dl class="contact">
-            <div><dt>Dónde</dt><dd>Carrer de la Riera, 12<br/>08960 Sant Just Desvern</dd></div>
+            <div><dt>Dónde</dt><dd>Carrer de la Riera, 12<br/>08960 Sant Just Desvern<br/><span class="contact-extra">Bus 63 y L10 a 2 min · fácil aparcar en la zona</span></dd></div>
             <div><dt>Horario</dt><dd>Lun–Jue · 9:00–20:00<br/>Vie · 9:00–14:00</dd></div>
-            <div><dt>Contacto</dt><dd>93 000 00 00 · WhatsApp</dd></div>
+            <div><dt>Contacto</dt><dd><a href={`tel:${TEL}`}>{TEL_TXT}</a> · <a href={WA}>WhatsApp</a></dd></div>
           </dl>
+          <a class="mapa" href="https://www.google.com/maps/search/?api=1&query=Carrer+de+la+Riera+12+Sant+Just+Desvern" target="_blank" rel="noopener">
+            <img src={asset("img/mapa.webp")} alt="Mapa de Sant Just Desvern con la consulta señalada" width="768" height="520" loading="lazy" decoding="async" />
+            <span class="mapa-cta">Cómo llegar →</span>
+          </a>
         </div>
         <form class="book-form" action="https://api.web3forms.com/submit" method="POST">
           <input type="hidden" name="access_key" value="TU-ACCESS-KEY-WEB3FORMS" />
@@ -184,6 +222,12 @@ const facts = [
       </section>
     </main>
 
+    <nav class="dock" aria-label="Contacto rápido">
+      <a href={`tel:${TEL}`}><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8a15 15 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.24 11 11 0 0 0 3.5.56 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11 11 0 0 0 .56 3.5 1 1 0 0 1-.25 1z"/></svg>Llamar</a>
+      <a href={WA}><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.2 1.2-1.7 1.2-.5.1-1 .1-1.6-.1a13 13 0 0 1-5-3.3 9.4 9.4 0 0 1-2-3.2c-.2-.7 0-1.3.4-1.7l.6-.6c.2-.2.5-.2.7.1l1 1.7c.1.3.1.5 0 .7l-.4.5c-.2.2-.2.4-.1.6a7.6 7.6 0 0 0 3.4 3c.3.1.5.1.7-.1l.6-.7c.2-.2.4-.2.7-.1l1.7.9c.3.1.4.4.3.7z"/></svg>WhatsApp</a>
+      <a href="#contacto" class="dock-cta">Pedir sesión</a>
+    </nav>
+
     <footer class="foot">
       <span class="brand sm"><span class="brand__mark" aria-hidden="true"></span>Ancla</span>
       <p>Psicología para adultos · Sant Just Desvern</p>
@@ -210,6 +254,7 @@ const facts = [
     --mauve-deep: #96586a;
     --line: #e2d9cb;
     --muted: #6b6270;
+    --star: #f4b400;
     --display: "Frank Ruhl Libre", serif;
     --ui: "Karla", system-ui, sans-serif;
   }
@@ -224,6 +269,9 @@ const facts = [
   a { color: inherit; text-decoration: none; }
   em { font-style: normal; color: var(--mauve-deep); font-weight: 700; }
 
+  h1, h2, h3 { text-wrap: balance; }
+  p { text-wrap: pretty; }
+
   .skip { position: absolute; left: -999px; top: auto; }
   .skip:focus { left: 12px; top: 12px; z-index: 100; background: var(--dusk); color: #fff; padding: 10px 16px; border-radius: 8px; }
 
@@ -237,7 +285,8 @@ const facts = [
   .btn {
     display: inline-block; font-family: var(--ui); font-weight: 700; font-size: 16px;
     padding: 15px 28px; border-radius: 100px; background: var(--dusk); color: #fff;
-    border: 1px solid var(--dusk); transition: transform .2s, background .25s, box-shadow .25s;
+    border: 1px solid var(--dusk);
+    transition: transform .5s linear(0, .55 18%, 1.04 42%, .98 60%, 1), background .25s, box-shadow .25s;
   }
   .btn:hover { background: var(--mauve-deep); border-color: var(--mauve-deep); transform: translateY(-2px); box-shadow: 0 14px 30px -14px rgba(150,88,106,.6); }
   .btn-sm { padding: 11px 20px; font-size: 15px; }
@@ -291,14 +340,13 @@ const facts = [
   .trust-note { margin-left: auto; font-size: 14px; color: var(--muted); }
 
   section { padding-left: clamp(24px, 6vw, 80px); padding-right: clamp(24px, 6vw, 80px); }
-  .ayuda, .proceso, .quote, .sobre, .book { padding-top: clamp(64px, 9vw, 120px); padding-bottom: clamp(64px, 9vw, 120px); }
+  .ayuda, .proceso, .resenas, .sobre, .book { padding-top: clamp(64px, 9vw, 120px); padding-bottom: clamp(64px, 9vw, 120px); }
   .sec-head { margin-bottom: 54px; max-width: 640px; }
   .sec-head h2, .sobre h2 {
     font-family: var(--display); font-weight: 400; font-style: normal;
     font-size: clamp(34px, 4.6vw, 56px); line-height: 1.05; letter-spacing: -.01em;
   }
   .sec-lead { margin-top: 16px; color: var(--muted); font-size: clamp(15px, 1.4vw, 17px); }
-  .sobre h2 { font-size: clamp(28px, 3.4vw, 38px); margin-bottom: 22px; color: var(--mauve-deep); }
   [data-reveal] { opacity: 0; transform: translateY(22px); transition: opacity .7s ease, transform .7s ease; }
   [data-reveal].in { opacity: 1; transform: none; }
 
@@ -323,24 +371,58 @@ const facts = [
   .proceso-photo { border-radius: 16px; overflow: hidden; border: 1px solid rgba(255,255,255,.14); }
   .proceso-photo img { display: block; width: 100%; height: 100%; min-height: 320px; object-fit: cover; }
 
-  /* Testimonio */
-  .quote { background: var(--surface); text-align: center; }
-  .quote blockquote { max-width: 860px; margin: 0 auto; }
-  .quote p { font-family: var(--display); font-style: italic; font-weight: 400; font-size: clamp(24px, 3.6vw, 40px); line-height: 1.25; letter-spacing: -.005em; }
-  .quote cite { display: block; margin-top: 26px; font-style: normal; font-size: 14px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
-
   /* Sobre mí */
-  .sobre { max-width: 780px; }
-  .sobre-text { font-size: clamp(19px, 2.1vw, 25px); line-height: 1.5; color: var(--ink); }
+  .sobre { display: grid; grid-template-columns: minmax(260px, 340px) 1fr; gap: clamp(30px, 5vw, 64px); align-items: start; max-width: 1080px; }
+  .sobre h2 { font-size: clamp(28px, 3.4vw, 38px); margin-bottom: 22px; color: var(--mauve-deep); }
+  .sobre-photo { border-radius: 18px; overflow: hidden; background: var(--surface); border: 1px solid var(--line); box-shadow: 0 26px 50px -36px rgba(42,36,50,.5); }
+  .sobre-photo img { display: block; width: 100%; height: 430px; object-fit: cover; object-position: 50% 20%; }
+  .sobre-photo figcaption { padding: 14px 18px 16px; display: flex; flex-direction: column; gap: 2px; }
+  .sobre-photo strong { font-family: var(--display); font-weight: 700; font-size: 18px; }
+  .sobre-photo span { font-size: 13px; color: var(--muted); }
+  .sobre-text { font-size: clamp(18px, 1.9vw, 23px); line-height: 1.5; color: var(--ink); }
   .sobre-text strong { font-weight: 700; }
   .sobre-cred { margin-top: 24px; color: var(--muted); font-size: 14.5px; }
 
+  /* Reseñas */
+  .resenas { background: var(--surface); }
+  .resenas-head { text-align: center; margin-bottom: 44px; }
+  .resenas-head h2 { font-family: var(--display); font-weight: 400; font-size: clamp(30px, 4.2vw, 48px); letter-spacing: -.01em; }
+  .resenas-count { color: var(--muted); font-size: 14px; margin-top: 10px; letter-spacing: .04em; }
+  .reviews { list-style: none; display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; max-width: 1100px; margin: 0 auto; }
+  .review {
+    background: var(--paper); border: 1px solid var(--line); border-radius: 16px; padding: 24px;
+    box-shadow: 0 18px 40px -32px rgba(42,36,50,.4);
+  }
+  .review-head { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+  .avatar {
+    width: 40px; height: 40px; border-radius: 50%; background: var(--dusk); color: #fff;
+    display: inline-flex; align-items: center; justify-content: center;
+    font-family: var(--display); font-weight: 700; font-size: 17px; flex-shrink: 0;
+  }
+  .review-head strong { display: block; font-size: 15px; }
+  .review-meta { font-size: 13px; color: var(--muted); }
+  .stars { color: var(--star); font-size: 15px; letter-spacing: 2px; margin-bottom: 10px; }
+  .review p { font-size: 15px; color: #554e5c; line-height: 1.55; }
+
   /* Contacto */
-  .book { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(34px, 6vw, 84px); align-items: center; }
+  .book { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(34px, 6vw, 84px); align-items: start; }
   .book h2 { font-family: var(--display); font-weight: 400; font-size: clamp(32px, 4.2vw, 52px); line-height: 1.05; letter-spacing: -.01em; }
   .contact { margin-top: 40px; display: grid; gap: 22px; }
   .contact dt { font-size: 13px; letter-spacing: .12em; text-transform: uppercase; color: var(--mauve-deep); font-weight: 700; margin-bottom: 6px; }
   .contact dd { color: var(--ink); line-height: 1.5; }
+  .contact dd a { border-bottom: 1px solid color-mix(in srgb, var(--mauve) 45%, transparent); }
+  .contact dd a:hover { color: var(--mauve-deep); }
+  .contact-extra { color: var(--muted); font-size: 14px; }
+  .mapa {
+    display: block; position: relative; margin-top: 32px; border: 1px solid var(--line);
+    border-radius: 14px; overflow: hidden;
+  }
+  .mapa img { display: block; width: 100%; height: 230px; object-fit: cover; }
+  .mapa-cta {
+    position: absolute; right: 14px; bottom: 14px; background: var(--mauve-deep); color: #fff;
+    font-size: 13px; font-weight: 700; letter-spacing: .04em; padding: 9px 15px; border-radius: 100px;
+  }
+  .mapa:hover .mapa-cta { background: var(--mauve); }
   .book-form { background: var(--surface); border: 1px solid var(--line); border-radius: 22px; padding: clamp(26px, 3vw, 40px); box-shadow: 0 30px 70px -44px rgba(42,36,50,.4); }
   .book-form h3 { font-family: var(--display); font-weight: 400; font-size: 26px; margin-bottom: 24px; letter-spacing: -.01em; }
   .book-form label { display: block; font-size: 13px; letter-spacing: .04em; text-transform: uppercase; color: var(--muted); font-weight: 700; margin-bottom: 18px; }
@@ -363,15 +445,76 @@ const facts = [
   .foot-links a { color: var(--muted); transition: color .25s; }
   .foot-links a:hover { color: var(--mauve-deep); }
 
+  /* Barra fija de contacto (solo móvil) */
+  .dock { display: none; }
+
   @media (max-width: 860px) {
     .bar-nav { display: none; }
-    .hero { grid-template-columns: 1fr; }
-    .hero-photo img { height: 280px; }
+    body { padding-bottom: 56px; }
+
+    .dock {
+      position: fixed; left: 0; right: 0; bottom: 0; z-index: 60;
+      display: grid; grid-template-columns: 1fr 1fr 1.3fr; gap: 1px;
+      background: var(--line); border-top: 1px solid var(--line);
+      padding-bottom: env(safe-area-inset-bottom);
+      font-size: 13px; letter-spacing: .04em;
+    }
+    .dock a {
+      background: var(--surface); color: var(--ink); min-height: 56px;
+      display: flex; align-items: center; justify-content: center; gap: 7px; font-weight: 700;
+    }
+    .dock svg { width: 17px; height: 17px; fill: var(--mauve-deep); }
+    .dock a.dock-cta { background: var(--dusk); color: #fff !important; }
+
+    /* la foto pasa a ser el fondo del primer pantallazo */
+    .hero { grid-template-columns: 1fr; position: relative; padding-top: 64px; padding-bottom: 52px; min-height: min(78svh, 720px); align-items: end; }
+    .hero-photo {
+      position: absolute; inset: 0; border-radius: 0; border: 0; box-shadow: none; z-index: 0;
+    }
+    .hero-photo img { width: 100%; height: 100%; object-position: 50% 45%; }
+    .hero-photo::after {
+      content: ""; position: absolute; inset: 0;
+      background: linear-gradient(180deg, rgba(23,19,40,.38) 0%, rgba(23,19,40,.58) 48%, rgba(23,19,40,.86) 100%);
+    }
+    .hero-photo figcaption { display: none; }
+    .hero-copy { position: relative; z-index: 2; color: #fff; }
+    .hero-copy .eyebrow { color: #e6c2ca; }
+    .hero-copy h1 { color: #fff; }
+    .hero-copy h1 em { color: #e6c2ca; }
+    .hero-copy .lead { color: #e3dcea; }
+    .hero-copy .link-soft { color: #e3dcea; }
+    .hero-cta .btn { background: var(--mauve-deep); border-color: var(--mauve-deep); }
+
     .ayuda-row { grid-template-columns: 44px 1fr; }
     .proceso { grid-template-columns: 1fr; border-radius: 20px; }
     .proceso-photo img { min-height: 220px; }
+    .sobre { grid-template-columns: 1fr; }
+    .sobre-photo { max-width: 420px; }
     .book { grid-template-columns: 1fr; }
+
+    .reviews {
+      grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: 84%;
+      overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 6px;
+      margin-inline: calc(clamp(24px, 6vw, 80px) * -1); padding-inline: clamp(24px, 6vw, 80px);
+      scrollbar-width: none;
+    }
+    .reviews::-webkit-scrollbar { display: none; }
+    .review { scroll-snap-align: center; }
   }
+
+  /* Revelado ligado al scroll donde el navegador lo soporta (sin JS) */
+  @supports (animation-timeline: view()) {
+    @media (prefers-reduced-motion: no-preference) {
+      [data-reveal] {
+        opacity: 1; transform: none; transition: none;
+        animation: reveal linear both;
+        animation-timeline: view();
+        animation-range: entry 8% cover 26%;
+      }
+      @keyframes reveal { from { opacity: 0; transform: translateY(24px); } }
+    }
+  }
+
   @media (prefers-reduced-motion: reduce) {
     *, [data-reveal] { animation: none !important; transition: none !important; opacity: 1 !important; transform: none !important; }
   }
